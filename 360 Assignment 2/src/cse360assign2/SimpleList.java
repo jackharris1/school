@@ -21,9 +21,9 @@ public class SimpleList {
 	 */
 	
 	public SimpleList () {
-		this.list = null;
+		this.list = new int[10000];
 		this.count = 0;
-		this.length = 10;
+		this.length = 0;
 	}
 	
 	/** @param - the index of the item to be returned from the list.
@@ -53,9 +53,9 @@ public class SimpleList {
 		if (this.count == this.length) {
 			this.length += (this.length / 2);
 		}
-		System.arraycopy(this.list, 0, this.list, 1, this.length-1);
+		System.arraycopy(this.list, 0, this.list, 1, this.list.length-1);
 		this.list[0] = addThis;
-		if (count != this.length) {
+		if (count == 0 || count != this.length) {
 			this.count++;
 		}
 	}
@@ -78,7 +78,7 @@ public class SimpleList {
 		
 		for (int removeCheck= 0; removeCheck < count; removeCheck++) {
 			if (this.list[removeCheck] == removeThis) {
-				System.arraycopy(this.list, removeCheck+1, this.list, removeCheck, this.length - 1 - removeCheck);
+				System.arraycopy(this.list, removeCheck+1, this.list, removeCheck, this.list.length - 1 - removeCheck);
 			}
 		}
 		this.count--;
@@ -151,7 +151,7 @@ public class SimpleList {
 	
 	public int last() {
 		if (this.count >= 1)
-			return this.list[this.count];
+			return this.list[this.count-1];
 		else return -1;
 	}
 	
