@@ -15,13 +15,15 @@ public class SimpleList {
 	
 	private int[] list;
 	private int count;
+	private int length;
 	
 	/** Creates an array to hold 10 integers and set count to 0.
 	 */
 	
 	public SimpleList () {
-		this.list = new int[10];
+		this.list = null;
 		this.count = 0;
+		this.length = 10;
 	}
 	
 	/** @param - the index of the item to be returned from the list.
@@ -43,14 +45,17 @@ public class SimpleList {
 	
 	/** @param addThis - the element to be added
 	 *  Add the parameter to the list at the beginning (index = 0).
-	 *  Move all the other integers in the list over so there is room.  If the list was full,
-	 *  then the last element “falls off” the list.  Increment the count as needed. 
+	 *  Move all the other integers in the list over so there is room.
+	 *  If the list starts full, increase the size by 50%. 
 	 */
 	
 	public void add (int addThis) {
-		System.arraycopy(this.list, 0, this.list, 1, this.list.length-1);
+		if (this.count == this.length) {
+			this.length += (this.length / 2);
+		}
+		System.arraycopy(this.list, 0, this.list, 1, this.length-1);
 		this.list[0] = addThis;
-		if (count != 10) {
+		if (count != this.length) {
 			this.count++;
 		}
 	}
@@ -65,9 +70,15 @@ public class SimpleList {
 		if (this.count == 0) {
 			return;
 		}
+		int emptySpaces = this.length - this.count;
+		int quarterOfList = this.length / 4;
+		if (emptySpaces > quarterOfList) {
+			this.length--;
+		}
+		
 		for (int removeCheck= 0; removeCheck < count; removeCheck++) {
 			if (this.list[removeCheck] == removeThis) {
-				System.arraycopy(this.list, removeCheck+1, this.list, removeCheck, this.list.length - 1 - removeCheck);
+				System.arraycopy(this.list, removeCheck+1, this.list, removeCheck, this.length - 1 - removeCheck);
 			}
 		}
 		this.count--;
