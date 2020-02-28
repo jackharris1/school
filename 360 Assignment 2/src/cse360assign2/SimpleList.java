@@ -122,26 +122,44 @@ public class SimpleList {
 		return -1;
 	}
 	
+	/** @param appendThis - the element to be appended
+	 *  Add the parameter to the list at the end (index = count).
+	 *  If the list starts full, increase the size by 50%. 
+	 */
 	
+	public void append(int appendThis) {
+		if (this.count == this.length) {
+			this.length += (this.length / 2);
+		}
+		this.list[this.count] = appendThis;
+		if (count != this.length) {
+			this.count++;
+		}
+	}
 	
+	/** @return - returns the first item in the list, or -1 if the list is empty.
+	 */
 	
+	public int first() {
+		if (this.count >= 1)
+			return this.list[0];
+		else return -1;
+	}
 	
+	/** @return - returns the last item in the list, or -1 if the list is empty.
+	 */
 	
+	public int last() {
+		if (this.count >= 1)
+			return this.list[this.count];
+		else return -1;
+	}
 	
+	/** @return - returns the current number of possible locations in the list.
+	 */
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public int size() {
+		return this.length;
+	}
 	
 }
