@@ -1,12 +1,21 @@
 /** Author: Jack Harris
+ * 
  *  ClassID: 362
- *  Class content: This class contains a basic constructor SimpleList
+ *  
+ *  Class Content: This class contains a basic constructor SimpleList
  *  that sets count to 0 and creates a 10 integer array.
- *  add() adds an item to the list.
- *  remove() removes an item from the list.
+ *  
+ *  add() adds an item to the list at the beginning.
+ *  remove() removes a specified item from the list.
  *  count() returns the number of items in the list.
+ *  size() returns the number of possible elements in the list.
  *  toString() returns the list as a String.
  *  search() finds the index of a given parameter in the list.
+ *  first() returns the first item in the list.
+ *  last() returns the last item in the list.
+ *  getListItem() gets the item at the specified index in the list.
+ *  getCount() returns the number of items in the list
+ *  append() puts the parameter at the end of the list.
 */
 
 package cse360assign2;
@@ -100,7 +109,7 @@ public class SimpleList {
 		String returnThis = "";
 		for (int index = 0; index < count; index++) {
 			returnThis += Integer.toString(this.list[index]);
-			if (index != count-1) {
+			if (index != count - 1) {
 				returnThis += " ";
 			}
 		}
